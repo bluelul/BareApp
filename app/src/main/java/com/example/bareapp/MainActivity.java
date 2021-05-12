@@ -69,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("text", "scroll view");
             MainActivity.this.startActivity(intent);
         });
+
+        this.findViewById(R.id.button7).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity6.class);
+            intent.putExtra("text", "clipboard");
+            MainActivity.this.startActivity(intent);
+        });
     }
 
     private static final int BACK_INTERVAL = 2000;
