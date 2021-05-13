@@ -21,7 +21,7 @@ public class MainActivity6 extends AppCompatActivity {
 
         this.findViewById(R.id.buttonCopy1).setOnClickListener(v -> {
             EditText textCopy1 = this.findViewById(R.id.editTextCopy1);
-            ClipData clipData = ClipData.newPlainText("clipboardx", textCopy1.getText());
+            ClipData clipData = ClipData.newPlainText("clipboard", textCopy1.getText());
             clipboardManager.setPrimaryClip(clipData);
         });
 
