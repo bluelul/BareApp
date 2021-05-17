@@ -1,17 +1,23 @@
 package com.example.bareapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity6 extends AppCompatActivity {
 
     private  ClipboardManager clipboardManager;
+    private Camera mCamera;
+    @SuppressLint("QueryPermissionsNeeded")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +35,18 @@ public class MainActivity6 extends AppCompatActivity {
             EditText textPaste1 = this.findViewById(R.id.editTextPaste1);
             ClipData primaryClipData = clipboardManager.getPrimaryClip();
             textPaste1.setText(primaryClipData.getItemAt(0).getText().toString());
+        });
+
+        this.findViewById(R.id.buttonCopy2).setOnClickListener(v -> {
+            Uri uri = Uri.parse("mailto:" + "bluelul.email@gmail.com");
+            Intent intentMail = new Intent(Intent.ACTION_SENDTO, uri);
+//            intentSms.putExtra("sms_body", "sms content");
+            if (intentMail.resolveActivity(getPackageManager()) != null) {
+                startActivity(intentMail);
+            } else {
+                Toast.makeText(this, "SMS texting is not supported on this device"
+                        , Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
