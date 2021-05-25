@@ -2,12 +2,7 @@ package com.example.bareapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.TimeInterpolator;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -15,7 +10,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity4 extends AppCompatActivity {
 
-    private boolean isFabExtend = false;
+    private boolean isFabExpand = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +27,7 @@ public class MainActivity4 extends AppCompatActivity {
         EditText text2 = this.findViewById(R.id.editTextTextPersonName2);
         text2.addTextChangedListener(new RealNumberWatcher(text2, ' '));
 
-        if (isFabExtend) fabClick();
+        if (isFabExpand) fabClick();
         this.findViewById(R.id.fabMain).setOnClickListener(v -> {
             fabClick();
             // todo:
@@ -43,16 +38,25 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     private void fabClick() {
+        FloatingActionButton fabMain = this.findViewById(R.id.fabMain);
         FloatingActionButton fab1 = this.findViewById(R.id.fab1);
         FloatingActionButton fab2 = this.findViewById(R.id.fab2);
-        if (isFabExtend) {
+        if (isFabExpand) {
+            // do collapse
+            fabMain.animate().rotation(45);
             fab1.animate().translationY(0);
             fab2.animate().translationY(0);
-            isFabExtend = false;
+            fab1.animate().alpha(0);
+            fab2.animate().alpha(0);
+            isFabExpand = false;
         } else {
-            fab1.animate().translationY(-getResources().getDimension(R.dimen.fabGap));
-            fab2.animate().translationY(-getResources().getDimension(R.dimen.fabGap)*2);
-            isFabExtend = true;
+            // do expand
+            fabMain.animate().rotation(0);
+            fab1.animate().translationY(-150);
+            fab2.animate().translationY(-150*2);
+            fab1.animate().alpha(1);
+            fab2.animate().alpha(1);
+            isFabExpand = true;
         }
     }
 }
