@@ -8,17 +8,25 @@ public class UserAccount implements Serializable {
     private String name;
     private String type;
     private boolean active;
+    private int avatarResId;
 
-    public UserAccount(String name, String type, boolean active) {
+    public UserAccount(String name, String type, int avatarResId, boolean active) {
         this.name = name;
         this.type = type;
         this.active = active;
+        this.avatarResId = avatarResId;
+    }
+
+    public UserAccount(String name, String type, int avatarResId) {
+        this(name, type, avatarResId, false);
+    }
+
+    public UserAccount(String name, String type, boolean active) {
+        this(name, type, 0, active);
     }
 
     public UserAccount(String name, String type) {
-        this.name = name;
-        this.type = type;
-        this.active = true;
+        this(name, type, 0, false);
     }
 
     public String getName() {
@@ -37,6 +45,14 @@ public class UserAccount implements Serializable {
         this.type = type;
     }
 
+    public int getAvatarResId() {
+        return avatarResId;
+    }
+
+    public void setAvatarResId(int avatarResId) {
+        this.avatarResId = avatarResId;
+    }
+
     public boolean isActive() {
         return active;
     }
@@ -48,9 +64,6 @@ public class UserAccount implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return "UserAccount{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        return  name + " (" + type + ')';
     }
 }
