@@ -87,6 +87,11 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("text", "scroll view order");
             startActivity(intent);
         });
+
+        this.findViewById(R.id.button10).setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity9.class);
+            startActivity(intent);
+        });
     }
 
     private static final int BACK_INTERVAL = 2000;

@@ -10,11 +10,12 @@
         <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
-            <option value="/mnt/2eefb5d4-6939-4d54-9d02-1f54f826f275/tunglt46/AndroidWorkspace/BareApp" />
-            <option value="/mnt/2eefb5d4-6939-4d54-9d02-1f54f826f275/tunglt46/AndroidWorkspace/BareApp/app" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>
