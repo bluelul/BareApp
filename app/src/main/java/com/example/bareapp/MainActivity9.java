@@ -1,8 +1,11 @@
 package com.example.bareapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 public class MainActivity9 extends AppCompatActivity {
 
@@ -21,5 +24,20 @@ public class MainActivity9 extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().setReorderingAllowed(true)
                     .replace(R.id.frameLayout, new BlankFragment2()).addToBackStack(null).commit();
         });
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        LinearLayout layoutBtn = findViewById(R.id.linearLayoutBtn);
+        LinearLayout layoutFrame = findViewById(R.id.linearLayoutFrame);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            layoutBtn.setOrientation(LinearLayout.VERTICAL);
+            layoutFrame.setOrientation(LinearLayout.HORIZONTAL);
+        } else {
+            layoutBtn.setOrientation(LinearLayout.HORIZONTAL);
+            layoutFrame.setOrientation(LinearLayout.VERTICAL);
+        }
     }
 }
