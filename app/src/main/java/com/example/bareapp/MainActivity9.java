@@ -24,15 +24,21 @@ public class MainActivity9 extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().setReorderingAllowed(true)
                     .replace(R.id.frameLayout, new BlankFragment2()).addToBackStack(null).commit();
         });
+
+        adaptOrient(getResources().getConfiguration());
     }
 
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
+        adaptOrient(newConfig);
+    }
+
+    private void adaptOrient(@NonNull Configuration config) {
         LinearLayout layoutBtn = findViewById(R.id.linearLayoutBtn);
         LinearLayout layoutFrame = findViewById(R.id.linearLayoutFrame);
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             layoutBtn.setOrientation(LinearLayout.VERTICAL);
             layoutFrame.setOrientation(LinearLayout.HORIZONTAL);
         } else {
