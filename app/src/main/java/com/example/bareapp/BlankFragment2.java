@@ -2,11 +2,14 @@ package com.example.bareapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +63,13 @@ public class BlankFragment2 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blank2, container, false);
+    }
+
+    void showText(String text) {
+        View view = getView();
+        assert view != null;
+
+        TextView textView = view.findViewById(R.id.textViewReceive);
+        textView.setText(text);
     }
 }

@@ -9,23 +9,38 @@ import android.widget.LinearLayout;
 
 public class MainActivity9 extends AppCompatActivity {
 
+    BlankFragment frag1 = new BlankFragment();
+    BlankFragment2 frag2 = new BlankFragment2();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main9);
 
-        getSupportFragmentManager().beginTransaction().setReorderingAllowed(true)
-                .add(R.id.frameLayout, new BlankFragment()).commit();
+        adaptOrient(getResources().getConfiguration());
 
         getSupportFragmentManager().beginTransaction().setReorderingAllowed(true)
-                .add(R.id.frameLayout2, new BlankFragment2()).commit();
+                .add(R.id.frameLayout, frag1).commit();
+
+        getSupportFragmentManager().beginTransaction().setReorderingAllowed(true)
+                .add(R.id.frameLayout2, frag2).commit();
 
         this.findViewById(R.id.btnFragOne).setOnClickListener(v -> {
+
+        });
+
+        this.findViewById(R.id.btnFragOne).setOnClickListener(v -> {
+
+        });
+
+        this.findViewById(R.id.btnFragThree).setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction().setReorderingAllowed(true)
                     .replace(R.id.frameLayout, new BlankFragment2()).addToBackStack(null).commit();
         });
+    }
 
-        adaptOrient(getResources().getConfiguration());
+    void showText(String text) {
+        frag2.showText(text);
     }
 
     @Override
